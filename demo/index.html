@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Demo — anuglar-weather-widget</title>
+
+		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+		<link rel="stylesheet" href="../node_modules/weather-icons/css/weather-icons.css">
+		<link rel="stylesheet" href="../src/angular-weather-widget.css">
+
+		<script src="../node_modules/jquery/dist/jquery.js"></script>
+		<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="../node_modules/angular/angular.js"></script>
+		<script src="../node_modules/moment/moment.js"></script>
+		<script src="app.js"></script>
+		<script src="../src/angular-weather-widget.js"></script>
+	</head>
+
+	<body ng-app="app">
+		<div ng-controller="demoCtrl">
+			<ui-weather-widget data="data"></ui-weather-widget>
+		</div>
+	</body>
+
+</html>
