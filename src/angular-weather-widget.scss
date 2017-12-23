@@ -1,0 +1,849 @@
+//  --------------------------------------------------------------------------------
+//  Mappings
+//  --------------------------------------------------------------------------------
+
+//  Darksky.net --------------------------------------------------------------------
+
+    .wi-darksky-net-clear-day {
+    	content: '\f00d';
+    }
+
+    .wi-darksky-net-clear-night {
+    	content: 'night-clear';
+    }
+
+    .wi-darksky-net-rain {
+    	content: '\f019';
+    }
+
+    .wi-darksky-net-snow {
+    	content: 'snow';
+    }
+
+    .wi-darksky-net-sleet {
+    	content: 'sleet';
+    }
+
+    .wi-darksky-net-wind {
+    	content: 'strong-wind';
+    }
+
+    .wi-darksky-net-fog {
+    	content: 'fog';
+    }
+
+    .wi-darksky-net-cloudy {
+    	content: '\f013';
+    }
+
+    .wi-darksky-net-partly-cloudy-day {
+    	content: 'day-cloudy';
+    }
+
+    .wi-darksky-net-partly-cloudy-night {
+    	content: 'night-cloudy';
+    }
+
+    .wi-darksky-net-hail {
+    	content: 'hail';
+    }
+
+    .wi-darksky-net-thunderstorm {
+    	content: 'thunderstorm';
+    }
+
+    .wi-darksky-net-tornado {
+    	content: '\f056';
+    }
+
+
+
+//  Weather Underground ------------------------------------------------------------
+
+	.wi-wu-chanceflurries {
+		content: 'snow-wind';
+	}
+
+	.wi-wu-chancerain {
+		content: '\f019';
+	}
+
+	.wi-wu-chancesleat {
+		content: 'sleet';
+	}
+
+	.wi-wu-chancesnow {
+		content: 'snow';
+	}
+
+	.wi-wu-chancetstorms {
+		content: 'thunderstorm';
+	}
+
+	.wi-wu-clear {
+		content: '\f00d';
+	}
+
+	.wi-wu-cloudy {
+		content: 'day-cloudy';
+	}
+
+	.wi-wu-flurries {
+		content: 'snow-wind';
+	}
+
+	.wi-wu-hazy {
+		content: 'day-haze';
+	}
+
+	.wi-wu-mostlycloudy {
+		content: 'day-cloudy';
+	}
+
+	.wi-wu-mostlysunny {
+		content: '\f00d';
+	}
+
+	.wi-wu-partlycloudy {
+		content: 'day-cloudy';
+	}
+
+	.wi-wu-partlysunny {
+		content: '\f00d';
+	}
+
+	.wi-wu-rain {
+		content: '\f01a';
+	}
+
+	.wi-wu-sleat {
+		content: 'sleet';
+	}
+
+	.wi-wu-snow {
+		content: 'snow';
+	}
+
+	.wi-wu-sunny {
+		content: '\f00d';
+	}
+
+	.wi-wu-tstorms {
+		content: 'thunderstorm';
+	}
+
+	.wi-wu-unknown {
+		content: '\f00d';
+	}
+
+
+//  Open Weather Map ---------------------------------------------------------------
+
+    .wi-owm-200 {
+    	content: 'thunderstorm';
+    }
+
+    .wi-owm-201 {
+    	content: 'thunderstorm';
+    }
+
+    .wi-owm-202 {
+    	content: 'thunderstorm';
+    }
+
+    .wi-owm-210 {
+    	content: 'lightning';
+    }
+
+    .wi-owm-211 {
+    	content: 'lightning';
+    }
+
+    .wi-owm-212 {
+    	content: 'lightning';
+    }
+
+    .wi-owm-221 {
+    	content: 'lightning';
+    }
+
+    .wi-owm-230 {
+    	content: 'thunderstorm';
+    }
+
+    .wi-owm-231 {
+    	content: 'thunderstorm';
+    }
+
+    .wi-owm-232 {
+    	content: 'thunderstorm';
+    }
+
+    .wi-owm-300 {
+    	content: '\f01c';
+    }
+
+    .wi-owm-301 {
+    	content: '\f01c';
+    }
+
+    .wi-owm-302 {
+    	content: '\f019';
+    }
+
+    .wi-owm-310 {
+    	content: 'rain-mix';
+    }
+
+    .wi-owm-311 {
+    	content: '\f019';
+    }
+
+    .wi-owm-312 {
+    	content: '\f019';
+    }
+
+    .wi-owm-313 {
+    	content: '\f01a';
+    }
+
+    .wi-owm-314 {
+    	content: '\f019';
+    }
+
+    .wi-owm-321 {
+    	content: '\f01c';
+    }
+
+    .wi-owm-500 {
+    	content: '\f01c';
+    }
+
+    .wi-owm-501 {
+    	content: '\f019';
+    }
+
+    .wi-owm-502 {
+    	content: '\f019';
+    }
+
+    .wi-owm-503 {
+    	content: '\f019';
+    }
+
+    .wi-owm-504 {
+    	content: '\f019';
+    }
+
+    .wi-owm-511 {
+    	content: 'rain-mix';
+    }
+
+    .wi-owm-520 {
+    	content: '\f01a';
+    }
+
+    .wi-owm-521 {
+    	content: '\f01a';
+    }
+
+    .wi-owm-522 {
+    	content: '\f01a';
+    }
+
+    .wi-owm-531 {
+    	content: 'storm-showers';
+    }
+
+    .wi-owm-600 {
+    	content: 'snow';
+    }
+
+    .wi-owm-601 {
+    	content: 'snow';
+    }
+
+    .wi-owm-602 {
+    	content: 'sleet';
+    }
+
+    .wi-owm-611 {
+    	content: 'rain-mix';
+    }
+
+    .wi-owm-612 {
+    	content: 'rain-mix';
+    }
+
+    .wi-owm-615 {
+    	content: 'rain-mix';
+    }
+
+    .wi-owm-616 {
+    	content: 'rain-mix';
+    }
+
+    .wi-owm-620 {
+    	content: 'rain-mix';
+    }
+
+    .wi-owm-621 {
+    	content: 'snow';
+    }
+
+    .wi-owm-622 {
+    	content: 'snow';
+    }
+
+    .wi-owm-701 {
+    	content: '\f01a';
+    }
+
+    .wi-owm-711 {
+    	content: 'smoke';
+    }
+
+    .wi-owm-721 {
+    	content: 'day-haze';
+    }
+
+    .wi-owm-731 {
+    	content: 'dust';
+    }
+
+    .wi-owm-741 {
+    	content: 'fog';
+    }
+
+    .wi-owm-761 {
+    	content: 'dust';
+    }
+
+    .wi-owm-762 {
+    	content: 'dust';
+    }
+
+    .wi-owm-771 {
+    	content: 'cloudy-gusts';
+    }
+
+    .wi-owm-781 {
+    	content: '\f056';
+    }
+
+    .wi-owm-800 {
+    	content: '\f00d';
+    }
+
+    .wi-owm-801 {
+    	content: 'cloudy-gusts';
+    }
+
+    .wi-owm-802 {
+    	content: 'cloudy-gusts';
+    }
+
+    .wi-owm-803 {
+    	content: 'cloudy-gusts';
+    }
+
+    .wi-owm-804 {
+    	content: '\f013';
+    }
+
+    .wi-owm-900 {
+    	content: '\f056';
+    }
+
+    .wi-owm-901 {
+    	content: 'storm-showers';
+    }
+
+    .wi-owm-902 {
+    	content: 'hurricane';
+    }
+
+    .wi-owm-903 {
+    	content: 'snowflake-cold';
+    }
+
+    .wi-owm-904 {
+    	content: 'hot';
+    }
+
+    .wi-owm-905 {
+    	content: 'windy';
+    }
+
+    .wi-owm-906 {
+    	content: 'hail';
+    }
+
+    .wi-owm-957 {
+    	content: 'strong-wind';
+    }
+
+    .wi-owm-day-200 {
+    	content: 'day-thunderstorm';
+    }
+
+    .wi-owm-day-201 {
+    	content: 'day-thunderstorm';
+    }
+
+    .wi-owm-day-202 {
+    	content: 'day-thunderstorm';
+    }
+
+    .wi-owm-day-210 {
+    	content: 'day-lightning';
+    }
+
+    .wi-owm-day-211 {
+    	content: 'day-lightning';
+    }
+
+    .wi-owm-day-212 {
+    	content: 'day-lightning';
+    }
+
+    .wi-owm-day-221 {
+    	content: 'day-lightning';
+    }
+
+    .wi-owm-day-230 {
+    	content: 'day-thunderstorm';
+    }
+
+    .wi-owm-day-231 {
+    	content: 'day-thunderstorm';
+    }
+
+    .wi-owm-day-232 {
+    	content: 'day-thunderstorm';
+    }
+
+    .wi-owm-day-300 {
+    	content: 'day-sprinkle';
+    }
+
+    .wi-owm-day-301 {
+    	content: 'day-sprinkle';
+    }
+
+    .wi-owm-day-302 {
+    	content: 'day-rain';
+    }
+
+    .wi-owm-day-310 {
+    	content: 'day-rain';
+    }
+
+    .wi-owm-day-311 {
+    	content: 'day-rain';
+    }
+
+    .wi-owm-day-312 {
+    	content: 'day-rain';
+    }
+
+    .wi-owm-day-313 {
+    	content: 'day-rain';
+    }
+
+    .wi-owm-day-314 {
+    	content: 'day-rain';
+    }
+
+    .wi-owm-day-321 {
+    	content: 'day-sprinkle';
+    }
+
+    .wi-owm-day-500 {
+    	content: 'day-sprinkle';
+    }
+
+    .wi-owm-day-501 {
+    	content: 'day-rain';
+    }
+
+    .wi-owm-day-502 {
+    	content: 'day-rain';
+    }
+
+    .wi-owm-day-503 {
+    	content: 'day-rain';
+    }
+
+    .wi-owm-day-504 {
+    	content: 'day-rain';
+    }
+
+    .wi-owm-day-511 {
+    	content: 'day-rain-mix';
+    }
+
+    .wi-owm-day-520 {
+    	content: 'day-showers';
+    }
+
+    .wi-owm-day-521 {
+    	content: 'day-showers';
+    }
+
+    .wi-owm-day-522 {
+    	content: 'day-showers';
+    }
+
+    .wi-owm-day-531 {
+    	content: 'day-storm-showers';
+    }
+
+    .wi-owm-day-600 {
+    	content: 'day-snow';
+    }
+
+    .wi-owm-day-601 {
+    	content: 'day-sleet';
+    }
+
+    .wi-owm-day-602 {
+    	content: 'day-snow';
+    }
+
+    .wi-owm-day-611 {
+    	content: 'day-rain-mix';
+    }
+
+    .wi-owm-day-612 {
+    	content: 'day-rain-mix';
+    }
+
+    .wi-owm-day-615 {
+    	content: 'day-rain-mix';
+    }
+
+    .wi-owm-day-616 {
+    	content: 'day-rain-mix';
+    }
+
+    .wi-owm-day-620 {
+    	content: 'day-rain-mix';
+    }
+
+    .wi-owm-day-621 {
+    	content: 'day-snow';
+    }
+
+    .wi-owm-day-622 {
+    	content: 'day-snow';
+    }
+
+    .wi-owm-day-701 {
+    	content: 'day-showers';
+    }
+
+    .wi-owm-day-711 {
+    	content: 'smoke';
+    }
+
+    .wi-owm-day-721 {
+    	content: 'day-haze';
+    }
+
+    .wi-owm-day-731 {
+    	content: 'dust';
+    }
+
+    .wi-owm-day-741 {
+    	content: 'day-fog';
+    }
+
+    .wi-owm-day-761 {
+    	content: 'dust';
+    }
+
+    .wi-owm-day-762 {
+    	content: 'dust';
+    }
+
+    .wi-owm-day-781 {
+    	content: '\f056';
+    }
+
+    .wi-owm-day-800 {
+    	content: '\f00d';
+    }
+
+    .wi-owm-day-801 {
+    	content: 'day-cloudy-gusts';
+    }
+
+    .wi-owm-day-802 {
+    	content: 'day-cloudy-gusts';
+    }
+
+    .wi-owm-day-803 {
+    	content: 'day-cloudy-gusts';
+    }
+
+    .wi-owm-day-804 {
+    	content: 'day-sunny-overcast';
+    }
+
+    .wi-owm-day-900 {
+    	content: '\f056';
+    }
+
+    .wi-owm-day-902 {
+    	content: 'hurricane';
+    }
+
+    .wi-owm-day-903 {
+    	content: 'snowflake-cold';
+    }
+
+    .wi-owm-day-904 {
+    	content: 'hot';
+    }
+
+    .wi-owm-day-906 {
+    	content: 'day-hail';
+    }
+
+    .wi-owm-day-957 {
+    	content: 'strong-wind';
+    }
+
+    .wi-owm-night-200 {
+    	content: 'night-alt-thunderstorm';
+    }
+
+    .wi-owm-night-201 {
+    	content: 'night-alt-thunderstorm';
+    }
+
+    .wi-owm-night-202 {
+    	content: 'night-alt-thunderstorm';
+    }
+
+    .wi-owm-night-210 {
+    	content: 'night-alt-lightning';
+    }
+
+    .wi-owm-night-211 {
+    	content: 'night-alt-lightning';
+    }
+
+    .wi-owm-night-212 {
+    	content: 'night-alt-lightning';
+    }
+
+    .wi-owm-night-221 {
+    	content: 'night-alt-lightning';
+    }
+
+    .wi-owm-night-230 {
+    	content: 'night-alt-thunderstorm';
+    }
+
+    .wi-owm-night-231 {
+    	content: 'night-alt-thunderstorm';
+    }
+
+    .wi-owm-night-232 {
+    	content: 'night-alt-thunderstorm';
+    }
+
+    .wi-owm-night-300 {
+    	content: 'night-alt-sprinkle';
+    }
+
+    .wi-owm-night-301 {
+    	content: 'night-alt-sprinkle';
+    }
+
+    .wi-owm-night-302 {
+    	content: 'night-alt-rain';
+    }
+
+    .wi-owm-night-310 {
+    	content: 'night-alt-rain';
+    }
+
+    .wi-owm-night-311 {
+    	content: 'night-alt-rain';
+    }
+
+    .wi-owm-night-312 {
+    	content: 'night-alt-rain';
+    }
+
+    .wi-owm-night-313 {
+    	content: 'night-alt-rain';
+    }
+
+    .wi-owm-night-314 {
+    	content: 'night-alt-rain';
+    }
+
+    .wi-owm-night-321 {
+    	content: 'night-alt-sprinkle';
+    }
+
+    .wi-owm-night-500 {
+    	content: 'night-alt-sprinkle';
+    }
+
+    .wi-owm-night-501 {
+    	content: 'night-alt-rain';
+    }
+
+    .wi-owm-night-502 {
+    	content: 'night-alt-rain';
+    }
+
+    .wi-owm-night-503 {
+    	content: 'night-alt-rain';
+    }
+
+    .wi-owm-night-504 {
+    	content: 'night-alt-rain';
+    }
+
+    .wi-owm-night-511 {
+    	content: 'night-alt-rain-mix';
+    }
+
+    .wi-owm-night-520 {
+    	content: 'night-alt-showers';
+    }
+
+    .wi-owm-night-521 {
+    	content: 'night-alt-showers';
+    }
+
+    .wi-owm-night-522 {
+    	content: 'night-alt-showers';
+    }
+
+    .wi-owm-night-531 {
+    	content: 'night-alt-storm-showers';
+    }
+
+    .wi-owm-night-600 {
+    	content: 'night-alt-snow';
+    }
+
+    .wi-owm-night-601 {
+    	content: 'night-alt-sleet';
+    }
+
+    .wi-owm-night-602 {
+    	content: 'night-alt-snow';
+    }
+
+    .wi-owm-night-611 {
+    	content: 'night-alt-rain-mix';
+    }
+
+    .wi-owm-night-612 {
+    	content: 'night-alt-rain-mix';
+    }
+
+    .wi-owm-night-615 {
+    	content: 'night-alt-rain-mix';
+    }
+
+    .wi-owm-night-616 {
+    	content: 'night-alt-rain-mix';
+    }
+
+    .wi-owm-night-620 {
+    	content: 'night-alt-rain-mix';
+    }
+
+    .wi-owm-night-621 {
+    	content: 'night-alt-snow';
+    }
+
+    .wi-owm-night-622 {
+    	content: 'night-alt-snow';
+    }
+
+    .wi-owm-night-701 {
+    	content: 'night-alt-showers';
+    }
+
+    .wi-owm-night-711 {
+    	content: 'smoke';
+    }
+
+    .wi-owm-night-721 {
+    	content: 'day-haze';
+    }
+
+    .wi-owm-night-731 {
+    	content: 'dust';
+    }
+
+    .wi-owm-night-741 {
+    	content: 'night-fog';
+    }
+
+    .wi-owm-night-761 {
+    	content: 'dust';
+    }
+
+    .wi-owm-night-762 {
+    	content: 'dust';
+    }
+
+    .wi-owm-night-781 {
+    	content: '\f056';
+    }
+
+    .wi-owm-night-800 {
+    	content: 'night-clear';
+    }
+
+    .wi-owm-night-801 {
+    	content: 'night-alt-cloudy-gusts';
+    }
+
+    .wi-owm-night-802 {
+    	content: 'night-alt-cloudy-gusts';
+    }
+
+    .wi-owm-night-803 {
+    	content: 'night-alt-cloudy-gusts';
+    }
+
+    .wi-owm-night-804 {
+    	content: 'night-alt-cloudy';
+    }
+
+    .wi-owm-night-900 {
+    	content: '\f056';
+    }
+
+    .wi-owm-night-902 {
+    	content: 'hurricane';
+    }
+
+    .wi-owm-night-903 {
+    	content: 'snowflake-cold';
+    }
+
+    .wi-owm-night-904 {
+    	content: 'hot';
+    }
+
+    .wi-owm-night-906 {
+    	content: 'night-alt-hail';
+    }
+
+    .wi-owm-night-957 {
+    	content: 'strong-wind';
+    }
+
