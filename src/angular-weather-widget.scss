@@ -4,846 +4,226 @@
 
 //  Darksky.net --------------------------------------------------------------------
 
-	.wi-darksky-net-clear-day {
-		content: '\f00d';
+	.wi-darksky-net- {
+		&clear-day::before { content: '\f00d' }
+		&clear-night::before { content: '\f02e' }
+		&rain::before { content: '\f019' }
+		&snow::before { content: '\f01b' }
+		&sleet::before { content: '\f0b5' }
+		&wind::before { content: '\f050' }
+		&fog::before { content: '\f014' }
+		&cloudy::before { content: '\f013' }
+		&partly-cloudy-day::before { content: '\f002' }
+		&partly-cloudy-night::before { content: '\f031' }
+		&hail::before { content: '\f015' }
+		&thunderstorm::before { content: '\f01e' }
+		&tornado::before { content: '\f056' }
 	}
-
-	.wi-darksky-net-clear-night {
-		content: '\f02e';
-	}
-
-	.wi-darksky-net-rain {
-		content: '\f019';
-	}
-
-	.wi-darksky-net-snow {
-		content: '\f01b';
-	}
-
-	.wi-darksky-net-sleet {
-		content: '\f0b5';
-	}
-
-	.wi-darksky-net-wind {
-		content: '\f050';
-	}
-
-	.wi-darksky-net-fog {
-		content: '\f014';
-	}
-
-	.wi-darksky-net-cloudy {
-		content: '\f013';
-	}
-
-	.wi-darksky-net-partly-cloudy-day {
-		content: '\f002';
-	}
-
-	.wi-darksky-net-partly-cloudy-night {
-		content: '\f031';
-	}
-
-	.wi-darksky-net-hail {
-		content: '\f015';
-	}
-
-	.wi-darksky-net-thunderstorm {
-		content: '\f01e';
-	}
-
-	.wi-darksky-net-tornado {
-		content: '\f056';
-	}
-
 
 
 //  Weather Underground ------------------------------------------------------------
 
-	.wi-wu-chanceflurries {
-		content: '\f064';
-	}
-
-	.wi-wu-chancerain {
-		content: '\f019';
-	}
-
-	.wi-wu-chancesleat {
-		content: '\f0b5';
-	}
-
-	.wi-wu-chancesnow {
-		content: '\f01b';
-	}
-
-	.wi-wu-chancetstorms {
-		content: '\f01e';
-	}
-
-	.wi-wu-clear {
-		content: '\f00d';
-	}
-
-	.wi-wu-cloudy {
-		content: '\f002';
-	}
-
-	.wi-wu-flurries {
-		content: '\f064';
-	}
-
-	.wi-wu-hazy {
-		content: '\f0b6';
-	}
-
-	.wi-wu-mostlycloudy {
-		content: '\f002';
-	}
-
-	.wi-wu-mostlysunny {
-		content: '\f00d';
-	}
-
-	.wi-wu-partlycloudy {
-		content: '\f002';
-	}
-
-	.wi-wu-partlysunny {
-		content: '\f00d';
-	}
-
-	.wi-wu-rain {
-		content: '\f01a';
-	}
-
-	.wi-wu-sleat {
-		content: '\f0b5';
-	}
-
-	.wi-wu-snow {
-		content: '\f01b';
-	}
-
-	.wi-wu-sunny {
-		content: '\f00d';
-	}
-
-	.wi-wu-tstorms {
-		content: '\f01e';
-	}
-
-	.wi-wu-unknown {
-		content: '\f00d';
+	.wi-wu- {
+		&chanceflurries::before { content: '\f064' }
+		&chancerain::before { content: '\f019' }
+		&chancesleat::before { content: '\f0b5' }
+		&chancesnow::before { content: '\f01b' }
+		&chancetstorms::before { content: '\f01e' }
+		&clear::before { content: '\f00d' }
+		&cloudy::before { content: '\f002' }
+		&flurries::before { content: '\f064' }
+		&hazy::before { content: '\f0b6' }
+		&mostlycloudy::before { content: '\f002' }
+		&mostlysunny::before { content: '\f00d' }
+		&partlycloudy::before { content: '\f002' }
+		&partlysunny::before { content: '\f00d' }
+		&rain::before { content: '\f01a' }
+		&sleat::before { content: '\f0b5' }
+		&snow::before { content: '\f01b' }
+		&sunny::before { content: '\f00d' }
+		&tstorms::before { content: '\f01e' }
+		&unknown::before { content: '\f00d' }
 	}
 
 
 //  Open Weather Map ---------------------------------------------------------------
 
-	.wi-owm-200 {
-		content: '\f01e';
+	.wi-owm- {
+		&200::before { content: '\f01e' }
+		&201::before { content: '\f01e' }
+		&202::before { content: '\f01e' }
+		&210::before { content: '\f016' }
+		&211::before { content: '\f016' }
+		&212::before { content: '\f016' }
+		&221::before { content: '\f016' }
+		&230::before { content: '\f01e' }
+		&231::before { content: '\f01e' }
+		&232::before { content: '\f01e' }
+		&300::before { content: '\f01c' }
+		&301::before { content: '\f01c' }
+		&302::before { content: '\f019' }
+		&310::before { content: '\f017' }
+		&311::before { content: '\f019' }
+		&312::before { content: '\f019' }
+		&313::before { content: '\f01a' }
+		&314::before { content: '\f019' }
+		&321::before { content: '\f01c' }
+		&500::before { content: '\f01c' }
+		&501::before { content: '\f019' }
+		&502::before { content: '\f019' }
+		&503::before { content: '\f019' }
+		&504::before { content: '\f019' }
+		&511::before { content: '\f017' }
+		&520::before { content: '\f01a' }
+		&521::before { content: '\f01a' }
+		&522::before { content: '\f01a' }
+		&531::before { content: '\f01d' }
+		&600::before { content: '\f01b' }
+		&601::before { content: '\f01b' }
+		&602::before { content: '\f0b5' }
+		&611::before { content: '\f017' }
+		&612::before { content: '\f017' }
+		&615::before { content: '\f017' }
+		&616::before { content: '\f017' }
+		&620::before { content: '\f017' }
+		&621::before { content: '\f01b' }
+		&622::before { content: '\f01b' }
+		&701::before { content: '\f01a' }
+		&711::before { content: '\f062' }
+		&721::before { content: '\f0b6' }
+		&731::before { content: '\f063' }
+		&741::before { content: '\f014' }
+		&761::before { content: '\f063' }
+		&762::before { content: '\f063' }
+		&771::before { content: '\f011' }
+		&781::before { content: '\f056' }
+		&800::before { content: '\f00d' }
+		&801::before { content: '\f011' }
+		&802::before { content: '\f011' }
+		&803::before { content: '\f011' }
+		&804::before { content: '\f013' }
+		&900::before { content: '\f056' }
+		&901::before { content: '\f01d' }
+		&902::before { content: '\f073' }
+		&903::before { content: '\f076' }
+		&904::before { content: '\f072' }
+		&905::before { content: '\f021' }
+		&906::before { content: '\f015' }
+		&957::before { content: '\f050' }
+		&day-200::before { content: '\f010' }
+		&day-201::before { content: '\f010' }
+		&day-202::before { content: '\f010' }
+		&day-210::before { content: '\f005' }
+		&day-211::before { content: '\f005' }
+		&day-212::before { content: '\f005' }
+		&day-221::before { content: '\f005' }
+		&day-230::before { content: '\f010' }
+		&day-231::before { content: '\f010' }
+		&day-232::before { content: '\f010' }
+		&day-300::before { content: '\f00b' }
+		&day-301::before { content: '\f00b' }
+		&day-302::before { content: '\f008' }
+		&day-310::before { content: '\f008' }
+		&day-311::before { content: '\f008' }
+		&day-312::before { content: '\f008' }
+		&day-313::before { content: '\f008' }
+		&day-314::before { content: '\f008' }
+		&day-321::before { content: '\f00b' }
+		&day-500::before { content: '\f00b' }
+		&day-501::before { content: '\f008' }
+		&day-502::before { content: '\f008' }
+		&day-503::before { content: '\f008' }
+		&day-504::before { content: '\f008' }
+		&day-511::before { content: '\f006' }
+		&day-520::before { content: '\f009' }
+		&day-521::before { content: '\f009' }
+		&day-522::before { content: '\f009' }
+		&day-531::before { content: '\f00e' }
+		&day-600::before { content: '\f00a' }
+		&day-601::before { content: '\f0b2' }
+		&day-602::before { content: '\f00a' }
+		&day-611::before { content: '\f006' }
+		&day-612::before { content: '\f006' }
+		&day-615::before { content: '\f006' }
+		&day-616::before { content: '\f006' }
+		&day-620::before { content: '\f006' }
+		&day-621::before { content: '\f00a' }
+		&day-622::before { content: '\f00a' }
+		&day-701::before { content: '\f009' }
+		&day-711::before { content: '\f062' }
+		&day-721::before { content: '\f0b6' }
+		&day-731::before { content: '\f063' }
+		&day-741::before { content: '\f003' }
+		&day-761::before { content: '\f063' }
+		&day-762::before { content: '\f063' }
+		&day-781::before { content: '\f056' }
+		&day-800::before { content: '\f00d' }
+		&day-801::before { content: '\f000' }
+		&day-802::before { content: '\f000' }
+		&day-803::before { content: '\f000' }
+		&day-804::before { content: '\f00c' }
+		&day-900::before { content: '\f056' }
+		&day-902::before { content: '\f073' }
+		&day-903::before { content: '\f076' }
+		&day-904::before { content: '\f072' }
+		&day-906::before { content: '\f004' }
+		&day-957::before { content: '\f050' }
+		&night-200::before { content: '\f02d' }
+		&night-201::before { content: '\f02d' }
+		&night-202::before { content: '\f02d' }
+		&night-210::before { content: '\f025' }
+		&night-211::before { content: '\f025' }
+		&night-212::before { content: '\f025' }
+		&night-221::before { content: '\f025' }
+		&night-230::before { content: '\f02d' }
+		&night-231::before { content: '\f02d' }
+		&night-232::before { content: '\f02d' }
+		&night-300::before { content: '\f02b' }
+		&night-301::before { content: '\f02b' }
+		&night-302::before { content: '\f036' }
+		&night-310::before { content: '\f036' }
+		&night-311::before { content: '\f036' }
+		&night-312::before { content: '\f036' }
+		&night-313::before { content: '\f036' }
+		&night-314::before { content: '\f036' }
+		&night-321::before { content: '\f02b' }
+		&night-500::before { content: '\f02b' }
+		&night-501::before { content: '\f036' }
+		&night-502::before { content: '\f036' }
+		&night-503::before { content: '\f036' }
+		&night-504::before { content: '\f036' }
+		&night-511::before { content: '\f034' }
+		&night-520::before { content: '\f029' }
+		&night-521::before { content: '\f029' }
+		&night-522::before { content: '\f029' }
+		&night-531::before { content: '\f02c' }
+		&night-600::before { content: '\f02a' }
+		&night-601::before { content: '\f0b4' }
+		&night-602::before { content: '\f02a' }
+		&night-611::before { content: '\f034' }
+		&night-612::before { content: '\f034' }
+		&night-615::before { content: '\f034' }
+		&night-616::before { content: '\f034' }
+		&night-620::before { content: '\f034' }
+		&night-621::before { content: '\f02a' }
+		&night-622::before { content: '\f02a' }
+		&night-701::before { content: '\f029' }
+		&night-711::before { content: '\f062' }
+		&night-721::before { content: '\f0b6' }
+		&night-731::before { content: '\f063' }
+		&night-741::before { content: '\f04a' }
+		&night-761::before { content: '\f063' }
+		&night-762::before { content: '\f063' }
+		&night-781::before { content: '\f056' }
+		&night-800::before { content: '\f02e' }
+		&night-801::before { content: '\f022' }
+		&night-802::before { content: '\f022' }
+		&night-803::before { content: '\f022' }
+		&night-804::before { content: '\f086' }
+		&night-900::before { content: '\f056' }
+		&night-902::before { content: '\f073' }
+		&night-903::before { content: '\f076' }
+		&night-904::before { content: '\f072' }
+		&night-906::before { content: '\f024' }
+		&night-957::before { content: '\f050' }
 	}
-
-	.wi-owm-201 {
-		content: '\f01e';
-	}
-
-	.wi-owm-202 {
-		content: '\f01e';
-	}
-
-	.wi-owm-210 {
-		content: '\f016';
-	}
-
-	.wi-owm-211 {
-		content: '\f016';
-	}
-
-	.wi-owm-212 {
-		content: '\f016';
-	}
-
-	.wi-owm-221 {
-		content: '\f016';
-	}
-
-	.wi-owm-230 {
-		content: '\f01e';
-	}
-
-	.wi-owm-231 {
-		content: '\f01e';
-	}
-
-	.wi-owm-232 {
-		content: '\f01e';
-	}
-
-	.wi-owm-300 {
-		content: '\f01c';
-	}
-
-	.wi-owm-301 {
-		content: '\f01c';
-	}
-
-	.wi-owm-302 {
-		content: '\f019';
-	}
-
-	.wi-owm-310 {
-		content: '\f017';
-	}
-
-	.wi-owm-311 {
-		content: '\f019';
-	}
-
-	.wi-owm-312 {
-		content: '\f019';
-	}
-
-	.wi-owm-313 {
-		content: '\f01a';
-	}
-
-	.wi-owm-314 {
-		content: '\f019';
-	}
-
-	.wi-owm-321 {
-		content: '\f01c';
-	}
-
-	.wi-owm-500 {
-		content: '\f01c';
-	}
-
-	.wi-owm-501 {
-		content: '\f019';
-	}
-
-	.wi-owm-502 {
-		content: '\f019';
-	}
-
-	.wi-owm-503 {
-		content: '\f019';
-	}
-
-	.wi-owm-504 {
-		content: '\f019';
-	}
-
-	.wi-owm-511 {
-		content: '\f017';
-	}
-
-	.wi-owm-520 {
-		content: '\f01a';
-	}
-
-	.wi-owm-521 {
-		content: '\f01a';
-	}
-
-	.wi-owm-522 {
-		content: '\f01a';
-	}
-
-	.wi-owm-531 {
-		content: '\f01d';
-	}
-
-	.wi-owm-600 {
-		content: '\f01b';
-	}
-
-	.wi-owm-601 {
-		content: '\f01b';
-	}
-
-	.wi-owm-602 {
-		content: '\f0b5';
-	}
-
-	.wi-owm-611 {
-		content: '\f017';
-	}
-
-	.wi-owm-612 {
-		content: '\f017';
-	}
-
-	.wi-owm-615 {
-		content: '\f017';
-	}
-
-	.wi-owm-616 {
-		content: '\f017';
-	}
-
-	.wi-owm-620 {
-		content: '\f017';
-	}
-
-	.wi-owm-621 {
-		content: '\f01b';
-	}
-
-	.wi-owm-622 {
-		content: '\f01b';
-	}
-
-	.wi-owm-701 {
-		content: '\f01a';
-	}
-
-	.wi-owm-711 {
-		content: '\f062';
-	}
-
-	.wi-owm-721 {
-		content: '\f0b6';
-	}
-
-	.wi-owm-731 {
-		content: '\f063';
-	}
-
-	.wi-owm-741 {
-		content: '\f014';
-	}
-
-	.wi-owm-761 {
-		content: '\f063';
-	}
-
-	.wi-owm-762 {
-		content: '\f063';
-	}
-
-	.wi-owm-771 {
-		content: '\f011';
-	}
-
-	.wi-owm-781 {
-		content: '\f056';
-	}
-
-	.wi-owm-800 {
-		content: '\f00d';
-	}
-
-	.wi-owm-801 {
-		content: '\f011';
-	}
-
-	.wi-owm-802 {
-		content: '\f011';
-	}
-
-	.wi-owm-803 {
-		content: '\f011';
-	}
-
-	.wi-owm-804 {
-		content: '\f013';
-	}
-
-	.wi-owm-900 {
-		content: '\f056';
-	}
-
-	.wi-owm-901 {
-		content: '\f01d';
-	}
-
-	.wi-owm-902 {
-		content: '\f073';
-	}
-
-	.wi-owm-903 {
-		content: '\f076';
-	}
-
-	.wi-owm-904 {
-		content: '\f072';
-	}
-
-	.wi-owm-905 {
-		content: '\f021';
-	}
-
-	.wi-owm-906 {
-		content: '\f015';
-	}
-
-	.wi-owm-957 {
-		content: '\f050';
-	}
-
-	.wi-owm-day-200 {
-		content: '\f010';
-	}
-
-	.wi-owm-day-201 {
-		content: '\f010';
-	}
-
-	.wi-owm-day-202 {
-		content: '\f010';
-	}
-
-	.wi-owm-day-210 {
-		content: '\f005';
-	}
-
-	.wi-owm-day-211 {
-		content: '\f005';
-	}
-
-	.wi-owm-day-212 {
-		content: '\f005';
-	}
-
-	.wi-owm-day-221 {
-		content: '\f005';
-	}
-
-	.wi-owm-day-230 {
-		content: '\f010';
-	}
-
-	.wi-owm-day-231 {
-		content: '\f010';
-	}
-
-	.wi-owm-day-232 {
-		content: '\f010';
-	}
-
-	.wi-owm-day-300 {
-		content: '\f00b';
-	}
-
-	.wi-owm-day-301 {
-		content: '\f00b';
-	}
-
-	.wi-owm-day-302 {
-		content: '\f008';
-	}
-
-	.wi-owm-day-310 {
-		content: '\f008';
-	}
-
-	.wi-owm-day-311 {
-		content: '\f008';
-	}
-
-	.wi-owm-day-312 {
-		content: '\f008';
-	}
-
-	.wi-owm-day-313 {
-		content: '\f008';
-	}
-
-	.wi-owm-day-314 {
-		content: '\f008';
-	}
-
-	.wi-owm-day-321 {
-		content: '\f00b';
-	}
-
-	.wi-owm-day-500 {
-		content: '\f00b';
-	}
-
-	.wi-owm-day-501 {
-		content: '\f008';
-	}
-
-	.wi-owm-day-502 {
-		content: '\f008';
-	}
-
-	.wi-owm-day-503 {
-		content: '\f008';
-	}
-
-	.wi-owm-day-504 {
-		content: '\f008';
-	}
-
-	.wi-owm-day-511 {
-		content: '\f006';
-	}
-
-	.wi-owm-day-520 {
-		content: '\f009';
-	}
-
-	.wi-owm-day-521 {
-		content: '\f009';
-	}
-
-	.wi-owm-day-522 {
-		content: '\f009';
-	}
-
-	.wi-owm-day-531 {
-		content: '\f00e';
-	}
-
-	.wi-owm-day-600 {
-		content: '\f00a';
-	}
-
-	.wi-owm-day-601 {
-		content: '\f0b2';
-	}
-
-	.wi-owm-day-602 {
-		content: '\f00a';
-	}
-
-	.wi-owm-day-611 {
-		content: '\f006';
-	}
-
-	.wi-owm-day-612 {
-		content: '\f006';
-	}
-
-	.wi-owm-day-615 {
-		content: '\f006';
-	}
-
-	.wi-owm-day-616 {
-		content: '\f006';
-	}
-
-	.wi-owm-day-620 {
-		content: '\f006';
-	}
-
-	.wi-owm-day-621 {
-		content: '\f00a';
-	}
-
-	.wi-owm-day-622 {
-		content: '\f00a';
-	}
-
-	.wi-owm-day-701 {
-		content: '\f009';
-	}
-
-	.wi-owm-day-711 {
-		content: '\f062';
-	}
-
-	.wi-owm-day-721 {
-		content: '\f0b6';
-	}
-
-	.wi-owm-day-731 {
-		content: '\f063';
-	}
-
-	.wi-owm-day-741 {
-		content: '\f003';
-	}
-
-	.wi-owm-day-761 {
-		content: '\f063';
-	}
-
-	.wi-owm-day-762 {
-		content: '\f063';
-	}
-
-	.wi-owm-day-781 {
-		content: '\f056';
-	}
-
-	.wi-owm-day-800 {
-		content: '\f00d';
-	}
-
-	.wi-owm-day-801 {
-		content: '\f000';
-	}
-
-	.wi-owm-day-802 {
-		content: '\f000';
-	}
-
-	.wi-owm-day-803 {
-		content: '\f000';
-	}
-
-	.wi-owm-day-804 {
-		content: '\f00c';
-	}
-
-	.wi-owm-day-900 {
-		content: '\f056';
-	}
-
-	.wi-owm-day-902 {
-		content: '\f073';
-	}
-
-	.wi-owm-day-903 {
-		content: '\f076';
-	}
-
-	.wi-owm-day-904 {
-		content: '\f072';
-	}
-
-	.wi-owm-day-906 {
-		content: '\f004';
-	}
-
-	.wi-owm-day-957 {
-		content: '\f050';
-	}
-
-	.wi-owm-night-200 {
-		content: '\f02d';
-	}
-
-	.wi-owm-night-201 {
-		content: '\f02d';
-	}
-
-	.wi-owm-night-202 {
-		content: '\f02d';
-	}
-
-	.wi-owm-night-210 {
-		content: '\f025';
-	}
-
-	.wi-owm-night-211 {
-		content: '\f025';
-	}
-
-	.wi-owm-night-212 {
-		content: '\f025';
-	}
-
-	.wi-owm-night-221 {
-		content: '\f025';
-	}
-
-	.wi-owm-night-230 {
-		content: '\f02d';
-	}
-
-	.wi-owm-night-231 {
-		content: '\f02d';
-	}
-
-	.wi-owm-night-232 {
-		content: '\f02d';
-	}
-
-	.wi-owm-night-300 {
-		content: '\f02b';
-	}
-
-	.wi-owm-night-301 {
-		content: '\f02b';
-	}
-
-	.wi-owm-night-302 {
-		content: '\f036';
-	}
-
-	.wi-owm-night-310 {
-		content: '\f036';
-	}
-
-	.wi-owm-night-311 {
-		content: '\f036';
-	}
-
-	.wi-owm-night-312 {
-		content: '\f036';
-	}
-
-	.wi-owm-night-313 {
-		content: '\f036';
-	}
-
-	.wi-owm-night-314 {
-		content: '\f036';
-	}
-
-	.wi-owm-night-321 {
-		content: '\f02b';
-	}
-
-	.wi-owm-night-500 {
-		content: '\f02b';
-	}
-
-	.wi-owm-night-501 {
-		content: '\f036';
-	}
-
-	.wi-owm-night-502 {
-		content: '\f036';
-	}
-
-	.wi-owm-night-503 {
-		content: '\f036';
-	}
-
-	.wi-owm-night-504 {
-		content: '\f036';
-	}
-
-	.wi-owm-night-511 {
-		content: '\f034';
-	}
-
-	.wi-owm-night-520 {
-		content: '\f029';
-	}
-
-	.wi-owm-night-521 {
-		content: '\f029';
-	}
-
-	.wi-owm-night-522 {
-		content: '\f029';
-	}
-
-	.wi-owm-night-531 {
-		content: '\f02c';
-	}
-
-	.wi-owm-night-600 {
-		content: '\f02a';
-	}
-
-	.wi-owm-night-601 {
-		content: '\f0b4';
-	}
-
-	.wi-owm-night-602 {
-		content: '\f02a';
-	}
-
-	.wi-owm-night-611 {
-		content: '\f034';
-	}
-
-	.wi-owm-night-612 {
-		content: '\f034';
-	}
-
-	.wi-owm-night-615 {
-		content: '\f034';
-	}
-
-	.wi-owm-night-616 {
-		content: '\f034';
-	}
-
-	.wi-owm-night-620 {
-		content: '\f034';
-	}
-
-	.wi-owm-night-621 {
-		content: '\f02a';
-	}
-
-	.wi-owm-night-622 {
-		content: '\f02a';
-	}
-
-	.wi-owm-night-701 {
-		content: '\f029';
-	}
-
-	.wi-owm-night-711 {
-		content: '\f062';
-	}
-
-	.wi-owm-night-721 {
-		content: '\f0b6';
-	}
-
-	.wi-owm-night-731 {
-		content: '\f063';
-	}
-
-	.wi-owm-night-741 {
-		content: '\f04a';
-	}
-
-	.wi-owm-night-761 {
-		content: '\f063';
-	}
-
-	.wi-owm-night-762 {
-		content: '\f063';
-	}
-
-	.wi-owm-night-781 {
-		content: '\f056';
-	}
-
-	.wi-owm-night-800 {
-		content: '\f02e';
-	}
-
-	.wi-owm-night-801 {
-		content: '\f022';
-	}
-
-	.wi-owm-night-802 {
-		content: '\f022';
-	}
-
-	.wi-owm-night-803 {
-		content: '\f022';
-	}
-
-	.wi-owm-night-804 {
-		content: '\f086';
-	}
-
-	.wi-owm-night-900 {
-		content: '\f056';
-	}
-
-	.wi-owm-night-902 {
-		content: '\f073';
-	}
-
-	.wi-owm-night-903 {
-		content: '\f076';
-	}
-
-	.wi-owm-night-904 {
-		content: '\f072';
-	}
-
-	.wi-owm-night-906 {
-		content: '\f024';
-	}
-
-	.wi-owm-night-957 {
-		content: '\f050';
-	}
-
