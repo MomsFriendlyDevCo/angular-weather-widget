@@ -14,35 +14,30 @@
  			description: 'Clear sky'
  		},
  		{
- 			date: date.add(1, 'd').toDate(),
  			tempMin: 17,
  			tempMax: 33,
  			id: 800,
  			description: 'Clear sky'
  		},
  		{
- 			date: date.add(1, 'd').toDate(),
  			tempMin: 21,
  			tempMax: 32,
- 			id: 800,
- 			description: 'Clear sky'
+ 			id: 230,
+ 			description: 'Possible thunderstorm'
  		},
  		{
- 			date: date.add(1, 'd').toDate(),
  			tempMin: 21,
  			tempMax: 34,
- 			id: 800,
- 			description: 'Clear sky'
+ 			id: 230,
+ 			description: 'Possible thunderstorm'
  		},
  		{
- 			date: date.add(1, 'd').toDate(),
- 			tempMin: 22,
- 			tempMax: 34,
- 			id: 800,
- 			description: 'Clear sky'
+ 			tempMin: 20,
+ 			tempMax: 30,
+ 			id: 804,
+ 			description: 'Cloudy'
  		},
  		{
- 			date: date.add(1, 'd').toDate(),
  			tempMin: 17,
  			tempMax: 33,
  			id: 800,

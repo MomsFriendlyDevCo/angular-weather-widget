@@ -1,40 +1,40 @@
-.wi-darksky-net-clear-day::before {
+.wi-dsn-clear-day::before {
   content: '\f00d'; }
 
-.wi-darksky-net-clear-night::before {
+.wi-dsn-clear-night::before {
   content: '\f02e'; }
 
-.wi-darksky-net-rain::before {
+.wi-dsn-rain::before {
   content: '\f019'; }
 
-.wi-darksky-net-snow::before {
+.wi-dsn-snow::before {
   content: '\f01b'; }
 
-.wi-darksky-net-sleet::before {
+.wi-dsn-sleet::before {
   content: '\f0b5'; }
 
-.wi-darksky-net-wind::before {
+.wi-dsn-wind::before {
   content: '\f050'; }
 
-.wi-darksky-net-fog::before {
+.wi-dsn-fog::before {
   content: '\f014'; }
 
-.wi-darksky-net-cloudy::before {
+.wi-dsn-cloudy::before {
   content: '\f013'; }
 
-.wi-darksky-net-partly-cloudy-day::before {
+.wi-dsn-partly-cloudy-day::before {
   content: '\f002'; }
 
-.wi-darksky-net-partly-cloudy-night::before {
+.wi-dsn-partly-cloudy-night::before {
   content: '\f031'; }
 
-.wi-darksky-net-hail::before {
+.wi-dsn-hail::before {
   content: '\f015'; }
 
-.wi-darksky-net-thunderstorm::before {
+.wi-dsn-thunderstorm::before {
   content: '\f01e'; }
 
-.wi-darksky-net-tornado::before {
+.wi-dsn-tornado::before {
   content: '\f056'; }
 
 .wi-wu-chanceflurries::before {

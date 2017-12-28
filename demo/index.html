@@ -7,7 +7,7 @@
 
 		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 		<link rel="stylesheet" href="../node_modules/weather-icons/css/weather-icons.css">
-		<link rel="stylesheet" href="../src/angular-weather-widget.css">
+		<link rel="stylesheet" href="../dist/angular-weather-widget.css">
 
 		<script src="../node_modules/jquery/dist/jquery.js"></script>
 		<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
@@ -19,7 +19,7 @@
 
 	<body ng-app="app">
 		<div ng-controller="demoCtrl">
-			<ui-weather-widget data="data"></ui-weather-widget>
+			<ui-weather-widget data="data" api="owm"></ui-weather-widget>
 		</div>
 	</body>
 

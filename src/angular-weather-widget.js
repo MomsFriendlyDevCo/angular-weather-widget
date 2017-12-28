@@ -10,6 +10,7 @@ angular
 	.component('uiWeatherWidget', {
 
 		bindings: {
+			api: '@',
 			class: '@?',
 			data: '<'
 		},
@@ -18,7 +19,11 @@ angular
 			var $ctrl = this;
 
 			$ctrl.$attrs = $attrs || {};
-			$ctrl.date = new Date();
+
+			$ctrl.getDay = function(offset) {
+				var date = new Date();
+				return date.setDate(date.getDate() + offset);
+			};
 		},
 
 		template: `
@@ -29,14 +34,16 @@ angular
 				<ul class="dropdown-menu">
 					<li class="media" ng-repeat="day in $ctrl.data" ng-if="!$first">
 						<div class="media-left media-middle">
-							<i class="wi wi-fw wi-day-sunny"></i>
+							<i class="wi wi-fw wi-dsn-{{ day.id }}" ng-if="$ctrl.api == 'dsn'"></i>
+							<i class="wi wi-fw wi-wu-{{ day.id }}" ng-if="$ctrl.api == 'wu'"></i>
+							<i class="wi wi-fw wi-owm-{{ day.id }}" ng-if="$ctrl.api == 'owm'"></i>
 						</div>
 						<div class="media-body">
 							<h4 class="media-heading">
 								<span class="text-danger">{{ day.tempMax }}°C</span>
 								<span class="text-primary">{{ day.tempMin }}°C</span>
 							</h4>
-							{{ day.date | date: 'EEEE' }}
+							{{ $ctrl.getDay($index) | date: 'EEEE' }}
 						</div>
 					</li>
 				</ul>
