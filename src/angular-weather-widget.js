@@ -29,7 +29,10 @@ angular
 		template: `
 			<div class="dropdown">
 				<button class="dropdown-toggle btn btn-primary" data-toggle="dropdown">
-					<i class="wi wi-day-sunny"></i> {{ $ctrl.data[0].temp }}°C
+					<i class="wi wi-wu-{{ $ctrl.data.forecast.simpleforecast.forecastday[0].icon }}" ng-if="$ctrl.api == 'wu'"></i>
+					<i class="wi wi-owm-{{ $ctrl.data }}" ng-if="$ctrl.api == 'owm'"></i>
+					<i class="wi wi-dsn-{{ $ctrl.data }}" ng-if="$ctrl.api == 'dsn'"></i>
+					{{ $ctrl.data[0].temp }}°C
 				</button>
 
 				<ul class="dropdown-menu">
