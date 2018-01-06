@@ -21,8 +21,8 @@ angular
 			$ctrl.$attrs = $attrs || {};
 
 			$ctrl.getDay = function(offset) {
-				var date = new Date();
-				return date.setDate(date.getDate() + offset);
+				var date = moment().add(offset, 'd');
+				return date.format('dddd');
 			};
 		},
 
@@ -32,7 +32,6 @@ angular
 					<i class="wi wi-wu-{{ $ctrl.data.forecast.simpleforecast.forecastday[0].icon }}" ng-if="$ctrl.api == 'wu'"></i>
 					<i class="wi wi-owm-{{ $ctrl.data }}" ng-if="$ctrl.api == 'owm'"></i>
 					<i class="wi wi-dsn-{{ $ctrl.data }}" ng-if="$ctrl.api == 'dsn'"></i>
-					{{ $ctrl.data[0].temp }}°C
 				</button>
 
 				<ul class="dropdown-menu">
@@ -45,7 +44,7 @@ angular
 								<span class="text-danger">{{ day.high.celsius }}°C</span>
 								<span class="text-primary">{{ day.low.celsius }}°C</span>
 							</h4>
-							{{ ::$ctrl.getDay($index) | date: 'EEEE' }}
+							{{ ::$ctrl.getDay($index) }}
 						</div>
 					</li>
 
