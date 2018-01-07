@@ -1,3 +1,11 @@
+ui-weather-widget .media-left {
+  padding: 10px; }
+
+ui-weather-widget .media-left > i {
+  font-size: 1.8em;
+  text-align: center;
+  width: 1.25em; }
+
 .wi-dsn-clear-day::before {
   content: '\f00d'; }
 
