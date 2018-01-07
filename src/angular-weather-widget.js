@@ -2,7 +2,8 @@
 * Angular-Weather-Widget
 * Compact weather widget that is toggle via. a dropdown.
 *
-* @param {string} [class] Optional class style to apply
+* @param {string} [api] Specify source of data (ie. Weather Underground)
+* @param {string} [title] Optional title for component (ie. Brisbane 5 day forecast)
 */
 
 angular
@@ -11,14 +12,15 @@ angular
 
 		bindings: {
 			api: '@',
-			class: '@?',
-			data: '<'
+			data: '<',
+			title: '@?'
 		},
 
 		controller: function($scope, $attrs) {
 			var $ctrl = this;
 
 			$ctrl.$attrs = $attrs || {};
+			$ctrl.limit = $ctrl.limit || 5;
 
 			$ctrl.getDay = function(offset) {
 				var date = moment().add(offset, 'd');
@@ -35,7 +37,12 @@ angular
 				</button>
 
 				<ul class="dropdown-menu">
-					<li class="media" ng-if="$ctrl.api == 'wu'" ng-repeat="day in $ctrl.data.forecast.simpleforecast.forecastday">
+					<li class="dropdown-header" ng-if="$ctrl.title">
+						{{ $ctrl.title }}
+					</li>
+					<li class="divider" ng-if="$ctrl.title" role="separator"></li>
+
+					<li class="media" ng-if="$ctrl.api == 'wu'" ng-repeat="day in $ctrl.data.forecast.simpleforecast.forecastday | limitTo: $ctrl.limit">
 						<div class="media-left media-middle">
 							<i class="wi wi-wu-{{ day.icon }}"></i>
 						</div>
