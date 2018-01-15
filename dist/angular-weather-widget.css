@@ -10,7 +10,7 @@ ui-weather-widget .media-left {
     width: 1.25em; }
 
 ui-weather-widget .media-body {
-  padding-right: 10px; }
+  padding-right: 15px; }
 
 .wi-dsn-clear-day::before {
   content: '\f00d'; }

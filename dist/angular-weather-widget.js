@@ -23,6 +23,9 @@ angular.module('uiWeatherWidget', []).component('uiWeatherWidget', {
 		$ctrl.limit = $ctrl.limit || 5;
 
 		$ctrl.getDay = function (offset) {
+			// Current day, just return 'Today'.
+			if (offset == 0) return 'Today';
+
 			var date = moment().add(offset, 'd');
 			return date.format('dddd');
 		};
