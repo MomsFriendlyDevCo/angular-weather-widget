@@ -1,17 +1,17 @@
 var _ = require('lodash');
-var annotate = require('gulp-ng-annotate');
 var babel = require('gulp-babel');
 var cleanCSS = require('gulp-clean-css');
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 var rename = require('gulp-rename');
 var nodemon = require('gulp-nodemon');
+var plumber = require('gulp-plumber');
 var uglify = require('gulp-uglify');
-var rimraf = require('rimraf');
 var sass = require('gulp-sass');
 var watch = require('gulp-watch');
 
-gulp.task('default', ['build']);
-gulp.task('build', ['js', 'js:min', 'css', 'css:min']);
+gulp.task('default', ['serve']);
+gulp.task('build', ['js', 'css']);
 
 
 gulp.task('serve', ['build'], function() {
@@ -27,7 +27,7 @@ gulp.task('serve', ['build'], function() {
 			console.log('Server restarted');
 		});
 
-	watch(['./index.js', 'demo/**/*.js', 'src/**/*.js'], function() {
+	watch(['demo/**/*.js', 'src/**/*.js'], function() {
 		console.log('Rebuild client-side JS files...');
 		gulp.start('js');
 	});
@@ -41,19 +41,23 @@ gulp.task('serve', ['build'], function() {
 
 gulp.task('js', () => {
 	gulp.src('./src/angular-weather-widget.js')
+		.pipe(plumber({
+			errorHandler: function(err) {
+				gutil.log(gutil.colors.red('ERROR DURING JS BUILD'));
+				process.stdout.write(err.stack);
+				this.emit('end');
+			},
+		}))
 		.pipe(rename('angular-weather-widget.js'))
 		.pipe(babel({presets: ['es2015']}))
-		.pipe(annotate())
-		.pipe(gulp.dest('./dist'));
-});
-
-gulp.task('js:min', () => {
-	gulp.src('./src/angular-weather-widget.js')
+		.pipe(babel({
+			presets: ['es2015'],
+			plugins: ['angularjs-annotate'],
+		}))
+		.pipe(gulp.dest('./dist'))
 		.pipe(rename('angular-weather-widget.min.js'))
-		.pipe(babel({presets: ['es2015']}))
-		.pipe(annotate())
-		.pipe(uglify({mangle: false}))
-		.pipe(gulp.dest('./dist'));
+		.pipe(uglify())
+		.pipe(gulp.dest('./dist'))
 });
 
 gulp.task('css', () => {
@@ -61,12 +65,7 @@ gulp.task('css', () => {
 		.pipe(rename('angular-weather-widget.css'))
 		.pipe(sass())
 		.pipe(gulp.dest('./dist'))
-});
-
-gulp.task('css:min', () => {
-	gulp.src('./src/angular-weather-widget.scss')
 		.pipe(rename('angular-weather-widget.min.css'))
-		.pipe(sass())
 		.pipe(cleanCSS())
 		.pipe(gulp.dest('./dist'))
 });
