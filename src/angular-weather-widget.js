@@ -23,10 +23,12 @@ angular
 			var $ctrl = this;
 
 			// Data refersher {{{
+			$ctrl.loading = true;
 			$ctrl.forecast;
 			$ctrl.refresh = ()=> {
 				if (!$ctrl.apiKey || $ctrl.location) return; // Not ready yet
 
+				$ctrl.loading = true;
 				$http({
 					url: `http://api.wunderground.com/api/${$ctrl.apiKey}/forecast10day/q/${$ctrl.location || 'australia/sydney'}.json`,
 					cache: true,
@@ -53,6 +55,7 @@ angular
 							throw new Error('Error fetching weather data: ' + error.toString());
 						}
 					})
+					.finally(()=> $ctrl.loading = false)
 			};
 			// }}}
 
@@ -60,8 +63,18 @@ angular
 		},
 		template: `
 			<div class="dropdown">
-				<button class="dropdown-toggle btn btn-default" data-toggle="dropdown">
-					<div class="media">
+				<button class="dropdown-toggle btn btn-block btn-default" data-toggle="dropdown">
+					<div ng-if="$ctrl.loading">
+						<div class="media-left media-middle">
+							<i class="fa fa-spinner fa-spin fa-2x"></i>
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">
+								Loading...
+							</h4>
+						</div>
+					</div>
+					<div ng-if="!$ctrl.loading" class="media">
 						<div class="media-left media-middle">
 							<i class="wi wi-wu-{{$ctrl.today.icon}}"></i>
 						</div>
@@ -79,7 +92,7 @@ angular
 					</div>
 				</button>
 
-				<ul class="dropdown-menu">
+				<ul ng-if="!$ctrl.loading" class="dropdown-menu">
 					<li class="dropdown-header" ng-if="$ctrl.title">
 						Weekly forcast
 					</li>
