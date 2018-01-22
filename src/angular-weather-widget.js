@@ -28,7 +28,7 @@ angular
 			$ctrl.refresh = ()=> {
 				if (!$ctrl.apiKey || $ctrl.location) return; // Not ready yet
 
-				$ctrl.loading = true;
+				$ctrl.status = 'loading';
 				$http({
 					url: `http://api.wunderground.com/api/${$ctrl.apiKey}/forecast10day/q/${$ctrl.location || 'australia/sydney'}.json`,
 					cache: true,
@@ -48,14 +48,15 @@ angular
 						}));
 					})
 					.then(()=> $ctrl.today = $ctrl.forecast[0])
+					.then(()=> $ctrl.status = 'loaded')
 					.catch(error => {
+						$ctrl.status = 'error';
 						if (angular.isFunction($ctrl.errorHandler)) {
 							$ctrl.errorHandler({error});
 						} else {
 							throw new Error('Error fetching weather data: ' + error.toString());
 						}
 					})
-					.finally(()=> $ctrl.loading = false)
 			};
 			// }}}
 
@@ -64,7 +65,7 @@ angular
 		template: `
 			<div class="dropdown">
 				<button class="dropdown-toggle btn btn-block btn-default" data-toggle="dropdown">
-					<div ng-if="$ctrl.loading">
+					<div ng-if="$ctrl.status == 'loading'">
 						<div class="media-left media-middle">
 							<i class="fa fa-spinner fa-spin fa-2x"></i>
 						</div>
@@ -74,7 +75,18 @@ angular
 							</h4>
 						</div>
 					</div>
-					<div ng-if="!$ctrl.loading" class="media">
+					<div ng-if="$ctrl.status == 'error'">
+						<div class="media-left media-middle">
+							<i class="fa fa-exclamation-triangle fa-2x"></i>
+						</div>
+						<div ng-click="$ctrl.refresh()" class="media-body">
+							<h4 class="media-heading">
+								Error loading weather
+							</h4>
+							<span class="text-muted">(click to retry)</span>
+						</div>
+					</div>
+					<div ng-if="$ctrl.status == 'loaded'" class="media">
 						<div class="media-left media-middle">
 							<i class="wi wi-wu-{{$ctrl.today.icon}}"></i>
 						</div>
@@ -92,7 +104,7 @@ angular
 					</div>
 				</button>
 
-				<ul ng-if="!$ctrl.loading" class="dropdown-menu">
+				<ul ng-if="$ctrl.status == 'loaded'" class="dropdown-menu">
 					<li class="dropdown-header" ng-if="$ctrl.title">
 						Weekly forcast
 					</li>
