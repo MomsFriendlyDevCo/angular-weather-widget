@@ -11,26 +11,41 @@
 
 angular
 	.module('uiWeatherWidget', [])
+	.provider('uiWeatherWidget', function() {
+		var settings = this.settings = {
+			apiKey: undefined,
+			location: 'australia/sydney',
+			errorHandler: undefined,
+			dayLimit: 7,
+			scale: 'celcius',
+		};
+
+		this.$get = function() {
+			return {settings};
+		};
+	})
 	.component('uiWeatherWidget', {
 		bindings: {
-			apiKey: '@',
+			apiKey: '@?',
 			location: '<?',
 			errorHandler: '&?',
 			dayLimit: '<?',
 			scale: '@?',
 		},
-		controller: function($http) {
+		controller: function($http, uiWeatherWidget) {
 			var $ctrl = this;
+			$ctrl.uiWeatherWidget = uiWeatherWidget;
 
 			// Data refersher {{{
 			$ctrl.loading = true;
 			$ctrl.forecast;
 			$ctrl.refresh = ()=> {
-				if (!$ctrl.apiKey || $ctrl.location) return; // Not ready yet
+				console.log('USE', $ctrl.apiKey, );
+				if ((!$ctrl.apiKey && !uiWeatherWidget.settings.apiKey) || (!$ctrl.location && !uiWeatherWidget.settings.location)) return; // Not ready yet
 
 				$ctrl.status = 'loading';
 				$http({
-					url: `http://api.wunderground.com/api/${$ctrl.apiKey}/forecast10day/q/${$ctrl.location || 'australia/sydney'}.json`,
+					url: `http://api.wunderground.com/api/${$ctrl.apiKey || uiWeatherWidget.settings.apiKey}/forecast10day/q/${$ctrl.location || uiWeatherWidget.settings.location || 'australia/sydney'}.json`,
 					cache: true,
 				})
 					.then(res => {
@@ -53,6 +68,8 @@ angular
 						$ctrl.status = 'error';
 						if (angular.isFunction($ctrl.errorHandler)) {
 							$ctrl.errorHandler({error});
+						} else if (angular.isFunction(uiWeatherWidget.settings.errorHandler)) {
+							uiWeatherWidget.settings.errorHandler(error);
 						} else {
 							throw new Error('Error fetching weather data: ' + error.toString());
 						}
@@ -110,7 +127,7 @@ angular
 					</li>
 					<li class="divider" ng-if="$ctrl.title" role="separator"></li>
 
-					<li ng-repeat="day in $ctrl.forecast | limitTo:($ctrl.dayLimit||7) track by day.date">
+					<li ng-repeat="day in $ctrl.forecast | limitTo:($ctrl.dayLimit||$ctrl.uiWeatherWidget.settings.dayLimit||7) track by day.date">
 						<a href="{{day.url}}" target="_blank" class="media">
 							<div class="media-left media-middle">
 								<i class="wi wi-wu-{{day.icon}}"></i>
