@@ -107,14 +107,11 @@ angular
 						<div class="media-left media-middle">
 							<i class="wi wi-wu-{{$ctrl.today.icon}}"></i>
 						</div>
-						<div class="media-body">
+						<div class="media-body text-center">
 							<h4 class="media-heading">
-								<span>{{$ctrl.today.dateRelative}}</span>
-								<div class="pull-right">
-									<span class="text-primary">{{$ctrl.scale == 'fahrenheit' ? $ctrl.today.low.fahrenheit + '°F' : $ctrl.today.low.celsius + '°C'}}</span>
-									-
-									<span class="text-danger">{{$ctrl.scale == 'fahrenheit' ? $ctrl.today.high.fahrenheit + '°F' : $ctrl.today.high.celsius + '°C'}}</span>
-								</div>
+								<span class="text-primary">{{$ctrl.scale == 'fahrenheit' ? $ctrl.today.low.fahrenheit + '°F' : $ctrl.today.low.celsius + '°C'}}</span>
+								-
+								<span class="text-danger">{{$ctrl.scale == 'fahrenheit' ? $ctrl.today.high.fahrenheit + '°F' : $ctrl.today.high.celsius + '°C'}}</span>
 							</h4>
 							<span class="text-muted">{{$ctrl.today.conditions}}</span>
 						</div>
