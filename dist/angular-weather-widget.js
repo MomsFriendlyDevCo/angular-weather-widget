@@ -2,34 +2,82 @@
 
 /**
 * Angular-Weather-Widget
-* Compact weather widget that is toggle via. a dropdown.
+* Compact weather widget displayed in a Bootstrap compatible dropdown
 *
-* @param {string} [api] Specify source of data (ie. Weather Underground)
-* @param {string} [title] Optional title for component (ie. Brisbane 5 day forecast)
+* @param {string} apiKey Wunderground API key
+* @param {string} [location="australia/sydney"] The location reference to display the weather for
+* @param {function} [errorHandler] Function to handle errors. Called as ({error}), if unspecified a standard error will throw
+* @param {number} [dayLimit=7] How many days of weather to display. The default is a full week
+* @param {string} [scale="celcius"] What measurement to use for temperatutes. ENUM: 'celsius', 'fahrenheit'
 */
 
-angular.module('uiWeatherWidget', []).component('uiWeatherWidget', {
+angular.module('uiWeatherWidget', []).provider('uiWeatherWidget', function () {
+	var settings = this.settings = {
+		apiKey: undefined,
+		location: 'australia/sydney',
+		errorHandler: undefined,
+		dayLimit: 7,
+		scale: 'celcius'
+	};
 
+	this.$get = function () {
+		return { settings: settings };
+	};
+}).component('uiWeatherWidget', {
 	bindings: {
-		api: '@',
-		data: '<',
-		title: '@?'
+		apiKey: '@?',
+		location: '<?',
+		errorHandler: '&?',
+		dayLimit: '<?',
+		scale: '@?'
 	},
-
-	controller: ["$scope", "$attrs", function controller($scope, $attrs) {
+	controller: ['$http', 'uiWeatherWidget', function controller($http, uiWeatherWidget) {
 		var $ctrl = this;
+		$ctrl.uiWeatherWidget = uiWeatherWidget;
 
-		$ctrl.$attrs = $attrs || {};
-		$ctrl.limit = $ctrl.limit || 5;
+		// Data refersher {{{
+		$ctrl.loading = true;
+		$ctrl.forecast;
+		$ctrl.refresh = function () {
+			console.log('USE', $ctrl.apiKey);
+			if (!$ctrl.apiKey && !uiWeatherWidget.settings.apiKey || !$ctrl.location && !uiWeatherWidget.settings.location) return; // Not ready yet
 
-		$ctrl.getDay = function (offset) {
-			// Current day, just return 'Today'.
-			if (offset == 0) return 'Today';
+			$ctrl.status = 'loading';
+			$http({
+				url: 'http://api.wunderground.com/api/' + ($ctrl.apiKey || uiWeatherWidget.settings.apiKey) + '/forecast10day/q/' + ($ctrl.location || uiWeatherWidget.settings.location || 'australia/sydney') + '.json',
+				cache: true
+			}).then(function (res) {
+				$ctrl.forecast = res.data.forecast.simpleforecast.forecastday.map(function (d, i) {
+					return {
+						date: moment.unix(d.date.epoch),
+						dateRelative: i == 0 ? 'Today' : i == 1 ? 'Tomorrow' : moment.unix(d.date.epoch).format('dddd'),
+						icon: d.icon,
+						conditions: d.conditions,
+						high: d.high,
+						low: d.low,
+						url: 'https://www.wunderground.com/weather/' + ($ctrl.location || 'australia/sydney')
+					};
+				});
+			}).then(function () {
+				return $ctrl.today = $ctrl.forecast[0];
+			}).then(function () {
+				return $ctrl.status = 'loaded';
+			}).catch(function (error) {
+				$ctrl.status = 'error';
+				if (angular.isFunction($ctrl.errorHandler)) {
+					$ctrl.errorHandler({ error: error });
+				} else if (angular.isFunction(uiWeatherWidget.settings.errorHandler)) {
+					uiWeatherWidget.settings.errorHandler(error);
+				} else {
+					throw new Error('Error fetching weather data: ' + error.toString());
+				}
+			});
+		};
+		// }}}
 
-			var date = moment().add(offset, 'd');
-			return date.format('dddd');
+		$ctrl.$onInit = function () {
+			return $ctrl.refresh();
 		};
 	}],
-
-	template: '\n\t\t\t<div class="dropdown">\n\t\t\t\t<button class="dropdown-toggle btn btn-primary" data-toggle="dropdown">\n\t\t\t\t\t<i class="wi wi-wu-{{ $ctrl.data.forecast.simpleforecast.forecastday[0].icon }}" ng-if="$ctrl.api == \'wu\'"></i>\n\t\t\t\t\t<i class="wi wi-owm-{{ $ctrl.data }}" ng-if="$ctrl.api == \'owm\'"></i>\n\t\t\t\t\t<i class="wi wi-dsn-{{ $ctrl.data }}" ng-if="$ctrl.api == \'dsn\'"></i>\n\t\t\t\t</button>\n\n\t\t\t\t<ul class="dropdown-menu">\n\t\t\t\t\t<li class="dropdown-header" ng-if="$ctrl.title">\n\t\t\t\t\t\t{{ $ctrl.title }}\n\t\t\t\t\t</li>\n\t\t\t\t\t<li class="divider" ng-if="$ctrl.title" role="separator"></li>\n\n\t\t\t\t\t<li class="media" ng-if="$ctrl.api == \'wu\'" ng-repeat="day in $ctrl.data.forecast.simpleforecast.forecastday | limitTo: $ctrl.limit">\n\t\t\t\t\t\t<div class="media-left media-middle">\n\t\t\t\t\t\t\t<i class="wi wi-wu-{{ day.icon }}"></i>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class="media-body">\n\t\t\t\t\t\t\t<h4 class="media-heading">\n\t\t\t\t\t\t\t\t<span class="text-danger">{{ day.high.celsius }}\xB0C</span>\n\t\t\t\t\t\t\t\t<span class="text-primary">{{ day.low.celsius }}\xB0C</span>\n\t\t\t\t\t\t\t</h4>\n\t\t\t\t\t\t\t<span>{{ ::$ctrl.getDay($index) }}</span>\n\t\t\t\t\t\t\t<span class="text-muted">{{ day.conditions }}</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li class="media" ng-if="$ctrl.api == \'owm\'" ng-repeat="day in $ctrl.data">\n\t\t\t\t\t\t<div class="media-left media-middle">\n\t\t\t\t\t\t\t<i class="wi wi-owm-{{ day.id }}"></i>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</li>\n\n\t\t\t\t\t<li class="media" ng-if="$ctrl.api == \'dsn\'" ng-repeat="day in $ctrl.data">\n\t\t\t\t\t\t<div class="media-left media-middle">\n\t\t\t\t\t\t\t<i class="wi wi-dsn-{{ day.id }}"></i>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t'
+	template: '\n\t\t\t<div class="dropdown">\n\t\t\t\t<button class="dropdown-toggle btn btn-block btn-default" data-toggle="dropdown">\n\t\t\t\t\t<div ng-if="$ctrl.status == \'loading\'">\n\t\t\t\t\t\t<div class="media-left media-middle">\n\t\t\t\t\t\t\t<i class="fa fa-spinner fa-spin fa-2x"></i>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class="media-body">\n\t\t\t\t\t\t\t<h4 class="media-heading">\n\t\t\t\t\t\t\t\tLoading...\n\t\t\t\t\t\t\t</h4>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div ng-if="$ctrl.status == \'error\'">\n\t\t\t\t\t\t<div class="media-left media-middle">\n\t\t\t\t\t\t\t<i class="fa fa-exclamation-triangle fa-2x"></i>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div ng-click="$ctrl.refresh()" class="media-body">\n\t\t\t\t\t\t\t<h4 class="media-heading">\n\t\t\t\t\t\t\t\tError loading weather\n\t\t\t\t\t\t\t</h4>\n\t\t\t\t\t\t\t<span class="text-muted">(click to retry)</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div ng-if="$ctrl.status == \'loaded\'" class="media">\n\t\t\t\t\t\t<div class="media-left media-middle">\n\t\t\t\t\t\t\t<i class="wi wi-wu-{{$ctrl.today.icon}}"></i>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class="media-body">\n\t\t\t\t\t\t\t<h4 class="media-heading">\n\t\t\t\t\t\t\t\t<span>{{$ctrl.today.dateRelative}}</span>\n\t\t\t\t\t\t\t\t<div class="pull-right">\n\t\t\t\t\t\t\t\t\t<span class="text-primary">{{$ctrl.scale == \'fahrenheit\' ? $ctrl.today.low.fahrenheit + \'\xB0F\' : $ctrl.today.low.celsius + \'\xB0C\'}}</span>\n\t\t\t\t\t\t\t\t\t-\n\t\t\t\t\t\t\t\t\t<span class="text-danger">{{$ctrl.scale == \'fahrenheit\' ? $ctrl.today.high.fahrenheit + \'\xB0F\' : $ctrl.today.high.celsius + \'\xB0C\'}}</span>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</h4>\n\t\t\t\t\t\t\t<span class="text-muted">{{$ctrl.today.conditions}}</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</button>\n\n\t\t\t\t<ul ng-if="$ctrl.status == \'loaded\'" class="dropdown-menu">\n\t\t\t\t\t<li class="dropdown-header" ng-if="$ctrl.title">\n\t\t\t\t\t\tWeekly forcast\n\t\t\t\t\t</li>\n\t\t\t\t\t<li class="divider" ng-if="$ctrl.title" role="separator"></li>\n\n\t\t\t\t\t<li ng-repeat="day in $ctrl.forecast | limitTo:($ctrl.dayLimit||$ctrl.uiWeatherWidget.settings.dayLimit||7) track by day.date">\n\t\t\t\t\t\t<a href="{{day.url}}" target="_blank" class="media">\n\t\t\t\t\t\t\t<div class="media-left media-middle">\n\t\t\t\t\t\t\t\t<i class="wi wi-wu-{{day.icon}}"></i>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class="media-body">\n\t\t\t\t\t\t\t\t<h4 class="media-heading">\n\t\t\t\t\t\t\t\t\t<span>{{day.dateRelative}}</span>\n\t\t\t\t\t\t\t\t\t<div class="pull-right">\n\t\t\t\t\t\t\t\t\t\t<span class="text-primary">{{$ctrl.scale == \'fahrenheit\' ? day.low.fahrenheit + \'\xB0F\' : day.low.celsius + \'\xB0C\'}}</span>\n\t\t\t\t\t\t\t\t\t\t-\n\t\t\t\t\t\t\t\t\t\t<span class="text-danger">{{$ctrl.scale == \'fahrenheit\' ? day.high.fahrenheit + \'\xB0F\' : day.high.celsius + \'\xB0C\'}}</span>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</h4>\n\t\t\t\t\t\t\t\t<span class="text-muted">{{day.conditions}}</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t'
 });
