@@ -2,11 +2,12 @@
 * Angular-Weather-Widget
 * Compact weather widget displayed in a Bootstrap compatible dropdown
 *
-* @param {string} apiKey Wunderground API key
+* @param {string} [apiKey] Wunderground API key
 * @param {string} [location="australia/sydney"] The location reference to display the weather for
 * @param {function} [errorHandler] Function to handle errors. Called as ({error}), if unspecified a standard error will throw
 * @param {number} [dayLimit=7] How many days of weather to display. The default is a full week
 * @param {string} [scale="celcius"] What measurement to use for temperatutes. ENUM: 'celsius', 'fahrenheit'
+* @param {string} [url] The URL to use (if unspecified it will be constructed from `apiKey` + `location`)
 */
 
 angular
@@ -18,6 +19,7 @@ angular
 			errorHandler: undefined,
 			dayLimit: 7,
 			scale: 'celcius',
+			url: undefined,
 		};
 
 		this.$get = function() {
@@ -31,6 +33,7 @@ angular
 			errorHandler: '&?',
 			dayLimit: '<?',
 			scale: '@?',
+			url: '@?',
 		},
 		controller: function($http, uiWeatherWidget) {
 			var $ctrl = this;
@@ -40,12 +43,19 @@ angular
 			$ctrl.loading = true;
 			$ctrl.forecast;
 			$ctrl.refresh = ()=> {
-				console.log('USE', $ctrl.apiKey, );
-				if ((!$ctrl.apiKey && !uiWeatherWidget.settings.apiKey) || (!$ctrl.location && !uiWeatherWidget.settings.location)) return; // Not ready yet
+				if ( ! (// Do we have enough information to continue?
+					($ctrl.url || uiWeatherWidget.settings.url)
+					|| (
+						($ctrl.apiKey || uiWeatherWidget.settings.apiKey)
+						&& ($ctrl.location || uiWeatherWidget.settings.location)
+					)
+				)) return; // Not ready yet
+
+				console.log('URL', $ctrl.url || uiWeatherWidget.settings.url || `http://api.wunderground.com/api/${$ctrl.apiKey || uiWeatherWidget.settings.apiKey}/forecast10day/q/${$ctrl.location || uiWeatherWidget.settings.location || 'australia/sydney'}.json`);
 
 				$ctrl.status = 'loading';
 				$http({
-					url: `http://api.wunderground.com/api/${$ctrl.apiKey || uiWeatherWidget.settings.apiKey}/forecast10day/q/${$ctrl.location || uiWeatherWidget.settings.location || 'australia/sydney'}.json`,
+					url: $ctrl.url || uiWeatherWidget.settings.url || `http://api.wunderground.com/api/${$ctrl.apiKey || uiWeatherWidget.settings.apiKey}/forecast10day/q/${$ctrl.location || uiWeatherWidget.settings.location || 'australia/sydney'}.json`,
 					cache: true,
 				})
 					.then(res => {
