@@ -2,11 +2,6 @@
 //  Styling
 //  --------------------------------------------------------------------------------
 
-	ui-weather-widget .dropdown-menu {
-		padding: 10px 0;
-		width: 300px;
-	}
-
 	ui-weather-widget .media-left {
 		padding: 10px 15px;
 
@@ -21,8 +16,34 @@
 		padding-right: 15px;
 	}
 
+	ui-weather-widget .radar {
+	}
 
+	.dropdown-menu.multi-column.has-radar {
+		width: 850px;
+	}
 
+	ui-weather-widget .dropdown-menu {
+		padding: 0;
+	}
+
+	.dropdown-menu.multi-column .dropdown-menu {
+		display: block;
+		position: static;
+		margin: 0;
+		padding: 0;
+		border: none;
+		box-shadow: none;
+		min-width:100px;
+	}
+
+	.dropdown-menu.multi-column > .dropdown-menu.weather-radar {
+		width: 512px;
+	}
+
+	.dropdown-menu.multi-column > .dropdown-menu.weather-menu {
+		width: 320px;
+	}
 
 
 //  --------------------------------------------------------------------------------

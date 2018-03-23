@@ -18,6 +18,7 @@ angular
 			location: 'australia/sydney',
 			errorHandler: undefined,
 			dayLimit: 7,
+			radar: '',
 			scale: 'celcius',
 			url: undefined,
 		};
@@ -33,6 +34,7 @@ angular
 			errorHandler: '&?',
 			dayLimit: '<?',
 			scale: '@?',
+			radar: '@?',
 			url: '@?',
 		},
 		controller: function($http, uiWeatherWidget) {
@@ -43,6 +45,12 @@ angular
 			$ctrl.loading = true;
 			$ctrl.forecast;
 			$ctrl.refresh = ()=> {
+				// Apply defaults {{{
+				Object.keys(uiWeatherWidget.settings).forEach(key => {
+					if ($ctrl[key] == undefined) $ctrl[key] = uiWeatherWidget.settings[key];
+				});
+				// }}}
+
 				if ( ! (// Do we have enough information to continue?
 					($ctrl.url || uiWeatherWidget.settings.url)
 					|| (
@@ -50,8 +58,6 @@ angular
 						&& ($ctrl.location || uiWeatherWidget.settings.location)
 					)
 				)) return; // Not ready yet
-
-				console.log('URL', $ctrl.url || uiWeatherWidget.settings.url || `http://api.wunderground.com/api/${$ctrl.apiKey || uiWeatherWidget.settings.apiKey}/forecast10day/q/${$ctrl.location || uiWeatherWidget.settings.location || 'australia/sydney'}.json`);
 
 				$ctrl.status = 'loading';
 				$http({
@@ -128,31 +134,36 @@ angular
 					</div>
 				</button>
 
-				<ul ng-if="$ctrl.status == 'loaded'" class="dropdown-menu">
-					<li class="dropdown-header" ng-if="$ctrl.title">
-						Weekly forcast
-					</li>
-					<li class="divider" ng-if="$ctrl.title" role="separator"></li>
+				<div ng-if="$ctrl.status == 'loaded'" class="dropdown-menu multi-column" ng-class="$ctrl.radar && 'has-radar'">
+					<ul ng-if="$ctrl.radar" class="dropdown-menu" class="weather-radar">
+						<li>
+							<img src="{{$ctrl.radar}}" width="512px" height="512px"/>
+						</li>
+					</ul>
+					<ul class="dropdown-menu weather-menu">
+						<li class="dropdown-header" ng-if="$ctrl.title">{{$ctrl.title}}</li>
+						<li class="divider" ng-if="$ctrl.title" role="separator"></li>
 
-					<li ng-repeat="day in $ctrl.forecast | limitTo:($ctrl.dayLimit||$ctrl.uiWeatherWidget.settings.dayLimit||7) track by day.date">
-						<a href="{{day.url}}" target="_blank" class="media">
-							<div class="media-left media-middle">
-								<i class="wi wi-wu-{{day.icon}}"></i>
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading">
-									<span>{{day.dateRelative}}</span>
-									<div class="pull-right">
-										<span class="text-primary">{{$ctrl.scale == 'fahrenheit' ? day.low.fahrenheit + '°F' : day.low.celsius + '°C'}}</span>
-										-
-										<span class="text-danger">{{$ctrl.scale == 'fahrenheit' ? day.high.fahrenheit + '°F' : day.high.celsius + '°C'}}</span>
-									</div>
-								</h4>
-								<span class="text-muted">{{day.conditions}}</span>
-							</div>
-						</a>
-					</li>
-				</ul>
+						<li ng-repeat="day in $ctrl.forecast | limitTo:($ctrl.dayLimit||$ctrl.uiWeatherWidget.settings.dayLimit||7) track by day.date">
+							<a href="{{day.url}}" target="_blank" class="media">
+								<div class="media-left media-middle">
+									<i class="wi wi-wu-{{day.icon}}"></i>
+								</div>
+								<div class="media-body">
+									<h4 class="media-heading">
+										<span>{{day.dateRelative}}</span>
+										<div class="pull-right">
+											<span class="text-primary">{{$ctrl.scale == 'fahrenheit' ? day.low.fahrenheit + '°F' : day.low.celsius + '°C'}}</span>
+											-
+											<span class="text-danger">{{$ctrl.scale == 'fahrenheit' ? day.high.fahrenheit + '°F' : day.high.celsius + '°C'}}</span>
+										</div>
+									</h4>
+									<span class="text-muted">{{day.conditions}}</span>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 		`
 	});
