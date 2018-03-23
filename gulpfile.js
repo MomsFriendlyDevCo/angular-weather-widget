@@ -32,7 +32,7 @@ gulp.task('serve', ['build'], function() {
 		gulp.start('js');
 	});
 
-	watch(['demo/**/*.css', 'src/**/*.css'], function() {
+	watch(['demo/**/*.css', 'src/**/*.scss'], function() {
 		console.log('Rebuild client-side CSS files...');
 		gulp.start('css');
 	});
