@@ -97,7 +97,7 @@ angular
 		},
 		template: `
 			<div class="dropdown">
-				<button class="dropdown-toggle btn btn-block btn-default" data-toggle="dropdown">
+				<button class="dropdown-toggle btn btn-block btn-default media" data-toggle="dropdown">
 					<div ng-if="$ctrl.status == 'loading'">
 						<div class="media-left media-middle">
 							<i class="fa fa-spinner fa-spin fa-2x"></i>
