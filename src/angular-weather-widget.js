@@ -137,7 +137,7 @@ angular
 				<div ng-if="$ctrl.status == 'loaded'" class="dropdown-menu multi-column" ng-class="$ctrl.radar && 'has-radar'">
 					<ul ng-if="$ctrl.radar" class="dropdown-menu" class="weather-radar">
 						<li>
-							<img src="{{$ctrl.radar}}" width="512px" height="512px"/>
+							<img ng-src="{{$ctrl.radar}}" width="512px" height="512px"/>
 						</li>
 					</ul>
 					<ul class="dropdown-menu weather-menu">
