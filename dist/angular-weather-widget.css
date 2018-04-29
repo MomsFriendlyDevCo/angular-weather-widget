@@ -14,7 +14,7 @@ ui-weather-widget .media-body {
 ui-weather-widget .dropdown-menu {
   padding: 0; }
 
-.dropdown-menu.multi-column .dropdown-menu {
+ui-weather-widget .dropdown-menu.multi-column .dropdown-menu {
   display: block;
   position: static;
   margin: 0;
@@ -23,11 +23,19 @@ ui-weather-widget .dropdown-menu {
   box-shadow: none;
   min-width: 100px; }
 
-.dropdown-menu.multi-column > .dropdown-menu.weather-radar {
+ui-weather-widget .dropdown-menu.multi-column > .dropdown-menu.weather-radar {
   width: 512px; }
 
-.dropdown-menu.multi-column > .dropdown-menu.weather-menu {
+ui-weather-widget .dropdown-menu.multi-column > .dropdown-menu.weather-menu {
   width: 320px; }
+
+ui-weather-widget .dropdown-menu > .weather-attributions {
+  float: right;
+  color: #ccc;
+  font-size: 10px; }
+
+ui-weather-widget .dropdown-menu > .weather-attributions a {
+  color: #ccc; }
 
 .wi-dsn-clear-day::before {
   content: '\f00d'; }

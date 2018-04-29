@@ -27,7 +27,7 @@
 		padding: 0;
 	}
 
-	.dropdown-menu.multi-column .dropdown-menu {
+	ui-weather-widget .dropdown-menu.multi-column .dropdown-menu {
 		display: block;
 		position: static;
 		margin: 0;
@@ -37,14 +37,23 @@
 		min-width:100px;
 	}
 
-	.dropdown-menu.multi-column > .dropdown-menu.weather-radar {
+	ui-weather-widget .dropdown-menu.multi-column > .dropdown-menu.weather-radar {
 		width: 512px;
 	}
 
-	.dropdown-menu.multi-column > .dropdown-menu.weather-menu {
+	ui-weather-widget .dropdown-menu.multi-column > .dropdown-menu.weather-menu {
 		width: 320px;
 	}
 
+	ui-weather-widget .dropdown-menu > .weather-attributions {
+		float: right;
+		color: #ccc;
+		font-size: 10px;
+	}
+
+	ui-weather-widget .dropdown-menu > .weather-attributions a {
+		color: #ccc;
+	}
 
 //  --------------------------------------------------------------------------------
 //  Mappings

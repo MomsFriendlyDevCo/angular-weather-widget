@@ -15,6 +15,7 @@ angular
 	.provider('uiWeatherWidget', function() {
 		var settings = this.settings = {
 			apiKey: undefined,
+			attributions: [{href: 'https://www.wunderground.com', title: 'Weather Underground'}],
 			location: 'australia/sydney',
 			errorHandler: undefined,
 			dayLimit: 7,
@@ -30,6 +31,7 @@ angular
 	.component('uiWeatherWidget', {
 		bindings: {
 			apiKey: '@?',
+			attributions: '<?',
 			location: '<?',
 			errorHandler: '&?',
 			dayLimit: '<?',
@@ -162,6 +164,12 @@ angular
 								</div>
 							</a>
 						</li>
+						<div ng-if="$ctrl.attributions && $ctrl.attributions.length" class="weather-attributions">
+							data provided by
+							<a ng-repeat="attribution in $ctrl.attributions" href="{{attribution.href}}" target="_blank">
+								{{attribution.title}}
+							</a>
+						</div>
 					</ul>
 				</div>
 			</div>
