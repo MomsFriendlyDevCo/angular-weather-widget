@@ -3,6 +3,7 @@
 * Compact weather widget displayed in a Bootstrap compatible dropdown
 *
 * @param {string} [apiKey] Wunderground API key
+* @param {array} [attributions] A list of attributions for the source data. Defaults to crediting 'Weather Underground'. Add any others you have (such as the radar) provider as entities. Each entity be an object with a `href` + `title` property
 * @param {string} [location="australia/sydney"] The location reference to display the weather for
 * @param {function} [errorHandler] Function to handle errors. Called as ({error}), if unspecified a standard error will throw
 * @param {number} [dayLimit=7] How many days of weather to display. The default is a full week
@@ -15,7 +16,9 @@ angular
 	.provider('uiWeatherWidget', function() {
 		var settings = this.settings = {
 			apiKey: undefined,
-			attributions: [{href: 'https://www.wunderground.com', title: 'Weather Underground'}],
+			attributions: [
+				{href: 'https://www.wunderground.com', title: 'Weather Underground'},
+			],
 			location: 'australia/sydney',
 			errorHandler: undefined,
 			dayLimit: 7,
@@ -164,11 +167,16 @@ angular
 								</div>
 							</a>
 						</li>
-						<div ng-if="$ctrl.attributions && $ctrl.attributions.length" class="weather-attributions">
-							data provided by
-							<a ng-repeat="attribution in $ctrl.attributions" href="{{attribution.href}}" target="_blank">
-								{{attribution.title}}
-							</a>
+						<div ng-if="$ctrl.attributions && $ctrl.attributions.length" class="weather-attributions-wrapper">
+							<div class="weather-attributions">
+								data provided by
+								<span ng-repeat="attribution in $ctrl.attributions">
+									<a href="{{attribution.href}}" target="_blank">
+										{{attribution.title}}
+									</a>
+									<span ng-if="!$last">,</span>
+								</span>
+							</div>
 						</div>
 					</ul>
 				</div>

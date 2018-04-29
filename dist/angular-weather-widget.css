@@ -29,13 +29,29 @@ ui-weather-widget .dropdown-menu.multi-column > .dropdown-menu.weather-radar {
 ui-weather-widget .dropdown-menu.multi-column > .dropdown-menu.weather-menu {
   width: 320px; }
 
-ui-weather-widget .dropdown-menu > .weather-attributions {
-  float: right;
-  color: #ccc;
-  font-size: 10px; }
+ui-weather-widget .dropdown-menu .weather-attributions-wrapper {
+  /* Wrapper exists to purposely bias the size of the dropdown so that the absolutely placed .weather-attributions has enough space */
+  height: 12px; }
 
-ui-weather-widget .dropdown-menu > .weather-attributions a {
+ui-weather-widget .dropdown-menu .weather-attributions {
+  color: #ccc;
+  font-size: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 5px;
+  right: 5px;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  text-overflow: ellipsis; }
+
+ui-weather-widget .dropdown-menu .weather-attributions a {
   color: #ccc; }
+
+ui-weather-widget .dropdown-menu .weather-attributions:hover,
+ui-weather-widget .dropdown-menu .weather-attributions:hover a {
+  color: #333; }
 
 .wi-dsn-clear-day::before {
   content: '\f00d'; }
